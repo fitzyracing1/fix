@@ -1,5 +1,6 @@
 {
-  "buildCommand": "pnpm build",
-  "outputDirectory": "packages/web/dist",
-  "installCommand": "corepack enable && pnpm install"
+  "buildCommand": "cd firecoin_acela0.1..0 && pnpm build",
+  "outputDirectory": "firecoin_acela0.1..0/packages/web/dist",
+  "installCommand": "cd firecoin_acela0.1..0 && corepack enable && pnpm install",
+  "framework": "vite"
 }
