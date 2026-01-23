@@ -1,7 +1,5 @@
 {
-  "version": 2,
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @firecoin/web build",
+  "buildCommand": "cd packages/web && npm run build",
   "outputDirectory": "packages/web/dist",
-  "framework": "vite"
+  "installCommand": "npm install -g pnpm && pnpm install"
 }
