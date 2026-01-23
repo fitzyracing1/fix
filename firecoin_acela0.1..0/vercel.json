@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd packages/web && npm run build",
+  "buildCommand": "pnpm build",
   "outputDirectory": "packages/web/dist",
-  "installCommand": "npm install -g pnpm && pnpm install"
+  "installCommand": "corepack enable && pnpm install"
 }
