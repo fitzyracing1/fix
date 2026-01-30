@@ -1,44 +1,25 @@
-import { useAccount, useConnect, useDisconnect, useWriteContract, useWaitForTransactionReceipt, useReadContract } from "wagmi";
-import { useState, useEffect } from "react";
+import { useAccount, useConnect, useDisconnect, useWriteContract, useWaitForTransactionReceipt, useChainId } from "wagmi";
+import { useMemo, useState } from "react";
 import abi from "./abi/FireCoin.json";
 
 const contractAddress = (import.meta.env.VITE_CONTRACT_ADDRESS || "") as `0x${string}`;
+const contractAddrValid = /^0x[a-fA-F0-9]{40}$/.test(contractAddress);
 
 export default function App() {
   const { address, isConnected } = useAccount();
+  const chainId = useChainId();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
   
-  // Read FCOIN balance
-  const { data: balance } = useReadContract({
-    address: contractAddress,
-    abi,
-    functionName: "balanceOf",
-    args: [address],
-    query: {
-      enabled: !!address,
-      refetchInterval: 1000, // Refresh every second
-    },
-  });
-  
   const [amount, setAmount] = useState("0");
   const [to, setTo] = useState("");
-  const [displayBalance, setDisplayBalance] = useState("0");
 
-  // Format balance for display
-  useEffect(() => {
-    if (balance) {
-      const balanceBigInt = BigInt(balance.toString());
-      const balanceInTokens = Number(balanceBigInt) / 1e18;
-      setDisplayBalance(balanceInTokens.toFixed(4));
-    }
-  }, [balance]);
-  const [displayBalance, setDisplayBalance] = useState("0");
+  const contractDisabled = useMemo(() => !contractAddrValid, []);
 
   async function transfer() {
-    if (!to || !address) return;
+    if (contractDisabled || !to || !address) return;
     const value = BigInt(Math.floor(Number(amount) * 1e18));
     writeContract({
       address: contractAddress,
@@ -49,7 +30,7 @@ export default function App() {
   }
 
   async function mint() {
-    if (!address) return;
+    if (contractDisabled || !address) return;
     const value = BigInt(Math.floor(Number(amount) * 1e18));
     writeContract({
       address: contractAddress,
@@ -60,7 +41,7 @@ export default function App() {
   }
 
   async function mine() {
-    if (!address) return;
+    if (contractDisabled || !address) return;
     writeContract({
       address: contractAddress,
       abi,
@@ -77,14 +58,19 @@ export default function App() {
       </p>
 
       <div style={{ marginBottom: 24, padding: 16, backgroundColor: "#f5f5f5", borderRadius: 8 }}>
+        {contractDisabled && (
+          <div style={{ padding: 12, marginBottom: 12, background: "#fff3cd", borderRadius: 6, border: "1px solid #f0ad4e" }}>
+            <strong>Contract address missing.</strong> Please ensure the app is built with VITE_CONTRACT_ADDRESS set.
+          </div>
+        )}
+        <div style={{ marginBottom: 8, fontSize: 14, color: "#444" }}>
+          <div><strong>Contract:</strong> {contractAddrValid ? contractAddress : "(not set)"}</div>
+          <div><strong>Chain ID:</strong> {chainId ?? "unknown"}</div>
+        </div>
         {isConnected ? (
           <div>
             <div style={{ marginBottom: 8 }}>
               <strong>Connected:</strong> {address}
-            </div>
-            <div style={{ marginBottom: 12, padding: 12, backgroundColor: "#fff9e6", borderRadius: 4 }}>
-              <strong>💰 Your FCOIN Balance:</strong>
-              <h2 style={{ margin: "8px 0 0 0", color: "#ff6b35" }}>{displayBalance} FCOIN</h2>
             </div>
             <button
               onClick={() => disconnect()}

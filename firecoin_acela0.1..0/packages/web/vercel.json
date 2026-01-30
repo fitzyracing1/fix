@@ -1,9 +1,10 @@
 {
-  "buildCommand": "pnpm install && pnpm vite build",
+  "buildCommand": "pnpm vite build",
   "outputDirectory": "dist",
   "framework": "vite",
   "env": {
-    "VITE_CONTRACT_ADDRESS": "@vite_contract_address",
-    "VITE_BASE_SEPOLIA_RPC_URL": "@vite_base_sepolia_rpc_url"
+    "VITE_CONTRACT_ADDRESS": "0x1C78664AEd3c83dB40BFE1319e7461C3f5b6398D",
+    "BOT_PAYMENT_ADDRESS": "0x2BA57aF7B4055E26c4ad1E840e2078E8E9bCce8A",
+    "BASE_RPC_URL": "https://mainnet.base.org"
   }
 }

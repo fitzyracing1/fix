@@ -1,0 +1,42 @@
+{
+  "name": "@firecoin/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cap:init": "echo 'Capacitor initialized'",
+    "cap:add:ios": "npx cap add ios",
+    "cap:copy": "npx cap copy ios",
+    "cap:open:ios": "npx cap open ios",
+    "ios": "pnpm build && pnpm cap:copy && pnpm cap:open:ios"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^2.2.0",
+    "@tanstack/react-query": "^5.90.12",
+    "ethers": "^6.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "viem": "^2.40.4",
+    "wagmi": "^2.19.5"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8",
+    "ws": "^8.19.0"
+  },
+  "capacitordeps": {
+    "runtime": {
+      "@capacitor/core": "^6.2.0",
+      "@capacitor/ios": "^6.2.0"
+    }
+  }
+}

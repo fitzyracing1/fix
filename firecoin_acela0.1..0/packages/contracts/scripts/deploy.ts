@@ -1,20 +1,16 @@
 import { ethers } from "hardhat";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 async function main() {
-  let deployer;
   const signers = await ethers.getSigners();
   
-  if (signers.length > 0) {
-    deployer = signers[0];
-  } else {
-    // Fallback: use private key from env
-    const privateKey = process.env.PRIVATE_KEY;
-    if (!privateKey) {
-      throw new Error("PRIVATE_KEY not set in .env file");
-    }
-    const provider = ethers.provider;
-    deployer = new ethers.Wallet(privateKey, provider);
+  if (signers.length === 0) {
+    throw new Error("No signers available. Check PRIVATE_KEY in .env");
   }
+
+  const deployer = signers[0];
   
   console.log("Deploying with:", deployer.address);
 

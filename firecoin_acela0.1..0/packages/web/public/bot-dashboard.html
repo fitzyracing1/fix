@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FireCoin Bot Dashboard</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 2px solid #ff6b00;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 3em;
+      background: linear-gradient(to right, #ff6b00, #ff9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section {
+      background: #1a1a1a;
+      padding: 30px;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid #333;
+    }
+    .endpoint {
+      background: #0f0f0f;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border-left: 4px solid #ff6b00;
+    }
+    .method {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .post { background: #00c853; color: #000; }
+    .get { background: #00b8d4; color: #000; }
+    code {
+      background: #000;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+    pre {
+      background: #000;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .contracts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .contract-card {
+      background: #0f0f0f;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+    .contract-card h4 {
+      margin: 0 0 10px 0;
+      color: #ff6b00;
+    }
+    .address {
+      font-family: monospace;
+      font-size: 0.85em;
+      word-break: break-all;
+      color: #aaa;
+    }
+    a {
+      color: #ff9500;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔥 FireCoin Bot API</h1>
+    <p>Automated Mining & Payment System on Base</p>
+  </div>
+
+  <div class="section">
+    <h2>📜 Smart Contracts</h2>
+    <div class="contracts">
+      <div class="contract-card">
+        <h4>FireCoin (FCOIN)</h4>
+        <div class="address">0x1C78664AEd3c83dB40BFE1319e7461C3f5b6398D</div>
+        <a href="https://basescan.org/address/0x1C78664AEd3c83dB40BFE1319e7461C3f5b6398D" target="_blank">View on BaseScan →</a>
+      </div>
+      <div class="contract-card">
+        <h4>BotPayment System</h4>
+        <div class="address">0x2BA57aF7B4055E26c4ad1E840e2078E8E9bCce8A</div>
+        <a href="https://basescan.org/address/0x2BA57aF7B4055E26c4ad1E840e2078E8E9bCce8A" target="_blank">View on BaseScan →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🤖 API Endpoints</h2>
+    
+    <div class="endpoint">
+      <span class="method post">POST</span>
+      <code>/api/mine</code>
+      <h3>Mine FireCoin</h3>
+      <p>Attempt to mine FireCoin blocks automatically.</p>
+      <pre>{
+  "botWalletKey": "0x...",
+  "attempts": 5
+}</pre>
+    </div>
+
+    <div class="endpoint">
+      <span class="method post">POST</span>
+      <code>/api/pay</code>
+      <h3>Pay Another Bot</h3>
+      <p>Send FireCoin payment (10% fee goes to owner).</p>
+      <pre>{
+  "botWalletKey": "0x...",
+  "recipientAddress": "0x...",
+  "amount": "100",
+  "service": "AI service"
+}</pre>
+    </div>
+
+    <div class="endpoint">
+      <span class="method get">GET</span>
+      <code>/api/status?address=0x...</code>
+      <h3>Check Bot Status</h3>
+      <p>Get bot balances and registration status.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💰 Fee Structure</h2>
+    <p>All bot payments include a <strong>10% fee</strong> that goes to the contract owner:</p>
+    <ul>
+      <li>Bot pays 100 FCOIN → Recipient gets <strong>90 FCOIN</strong></li>
+      <li>Owner receives <strong>10 FCOIN</strong> automatically</li>
+      <li>Fee adjustable (0-50%) by owner</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📚 Documentation</h2>
+    <p>For detailed API documentation, visit <a href="/api/README.md">/api/README.md</a></p>
+    <p>Uniswap Trading: <a href="https://app.uniswap.org/swap?outputCurrency=0x1C78664AEd3c83dB40BFE1319e7461C3f5b6398D" target="_blank">Trade FCOIN →</a></p>
+  </div>
+
+  <div class="section" style="text-align: center; opacity: 0.7;">
+    <p>FireCoin - Mineable cryptocurrency with automated bot payments on Base</p>
+  </div>
+</body>
+</html>

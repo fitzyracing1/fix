@@ -1,0 +1,24 @@
+[
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "initialSupply", "type": "uint256" },
+      { "internalType": "uint256", "name": "_cap", "type": "uint256" },
+      { "internalType": "address", "name": "owner_", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  { "inputs": [], "name": "cap", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+  { "inputs": [], "name": "pause", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+  { "inputs": [], "name": "unpause", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+  { "inputs": [{ "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "mint", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+  { "inputs": [], "name": "mine", "outputs": [{"internalType":"bool","name":"","type":"bool"}], "stateMutability": "nonpayable", "type": "function" },
+  { "anonymous": false, "inputs": [
+    {"indexed": true, "internalType": "address", "name": "miner", "type": "address"},
+    {"indexed": true, "internalType": "uint256", "name": "blockNumber", "type": "uint256"},
+    {"indexed": false, "internalType": "uint256", "name": "reward", "type": "uint256"}
+  ], "name": "Mined", "type": "event" },
+  { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+  { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+  { "inputs": [{ "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "transfer", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }
+]

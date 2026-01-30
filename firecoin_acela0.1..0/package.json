@@ -1,0 +1,15 @@
+{
+  "name": "firecoin",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "chain": "anvil -f https://eth-sepolia.g.alchemy.com/v2/demo --port 8545",
+    "hardhat": "pnpm --filter @firecoin/contracts hardhat",
+    "dev": "pnpm -w --filter @firecoin/web dev",
+    "build": "pnpm -w --filter @firecoin/web build"
+  }
+}

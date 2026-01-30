@@ -1,0 +1,6 @@
+node_modules/
+.env
+packages/**/dist
+packages/**/coverage
+artifacts/
+cache/
