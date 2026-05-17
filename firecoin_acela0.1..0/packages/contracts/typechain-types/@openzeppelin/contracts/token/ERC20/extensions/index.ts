@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { ERC20Burnable } from "./ERC20Burnable";
+export type { ERC20Wrapper } from "./ERC20Wrapper";
 export type { IERC20Metadata } from "./IERC20Metadata";

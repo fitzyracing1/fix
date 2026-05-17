@@ -2,4 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export { BotPayment__factory } from "./BotPayment__factory";
+export { FCOINAuction__factory } from "./FCOINAuction__factory";
 export { FireCoin__factory } from "./FireCoin__factory";
+export { FireCoinPG__factory } from "./FireCoinPG__factory";
+export { WrappedFireCoin__factory } from "./WrappedFireCoin__factory";

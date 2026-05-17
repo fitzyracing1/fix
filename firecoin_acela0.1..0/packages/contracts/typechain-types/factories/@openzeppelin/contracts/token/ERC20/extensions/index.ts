@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { ERC20Burnable__factory } from "./ERC20Burnable__factory";
+export { ERC20Wrapper__factory } from "./ERC20Wrapper__factory";
 export { IERC20Metadata__factory } from "./IERC20Metadata__factory";

@@ -8,7 +8,10 @@
     "test": "hardhat test",
     "deploy:localhost": "hardhat run scripts/deploy.ts --network localhost",
     "check-balance": "hardhat run scripts/check-balance.ts --network base",
-    "mint": "hardhat run scripts/mint.ts --network base"
+    "mint": "hardhat run scripts/mint.ts --network base",
+    "deploy:wrapper": "hardhat run scripts/deploy-wrapped-firecoin.ts --network base",
+    "wrap": "hardhat run scripts/wrap-firecoin.ts --network base",
+    "wrap:auction": "hardhat run scripts/wrap-from-auction.ts --network base"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

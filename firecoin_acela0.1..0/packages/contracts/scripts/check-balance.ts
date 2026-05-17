@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 
-const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || "0x08bfBEb9364510E15321068cd2B6391255f88D8c";
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || "";
 
 async function main() {
   const signers = await ethers.getSigners();
@@ -18,18 +18,19 @@ async function main() {
   console.log("Address:", address);
   console.log("ETH Balance:", balanceEth, "ETH");
 
-  // Get FireCoin balance
-  const FireCoin = await ethers.getContractAt("FireCoin", CONTRACT_ADDRESS);
-  const fcoinBalance = await FireCoin.balanceOf(address);
-  const fcoinFormatted = ethers.formatEther(fcoinBalance);
-  const totalSupply = await FireCoin.totalSupply();
-  const totalSupplyFormatted = ethers.formatEther(totalSupply);
+  if (CONTRACT_ADDRESS) {
+    const FireCoin = await ethers.getContractAt("FireCoin", CONTRACT_ADDRESS);
+    const fcoinBalance = await FireCoin.balanceOf(address);
+    const fcoinFormatted = ethers.formatEther(fcoinBalance);
+    const totalSupply = await FireCoin.totalSupply();
+    const totalSupplyFormatted = ethers.formatEther(totalSupply);
 
-  console.log("\n=== FireCoin Details ===");
-  console.log("Contract:", CONTRACT_ADDRESS);
-  console.log("Your FCOIN Balance:", fcoinFormatted, "FCOIN");
-  console.log("Total Supply:", totalSupplyFormatted, "FCOIN");
-  console.log("===================\n");
+    console.log("\n=== FireCoin Details ===");
+    console.log("Contract:", CONTRACT_ADDRESS);
+    console.log("Your FCOIN Balance:", fcoinFormatted, "FCOIN");
+    console.log("Total Supply:", totalSupplyFormatted, "FCOIN");
+    console.log("===================\n");
+  }
 }
 
 main().catch((err) => {

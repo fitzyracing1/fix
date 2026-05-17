@@ -2,4 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { BotPayment } from "./BotPayment";
+export type { FCOINAuction } from "./FCOINAuction";
 export type { FireCoin } from "./FireCoin";
+export type { FireCoinPG } from "./FireCoinPG";
+export type { WrappedFireCoin } from "./WrappedFireCoin";

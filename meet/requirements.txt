@@ -1,3 +1,0 @@
-# Core dependencies for Autonomous Robot Protocol Standard Bot
-# No external dependencies required for basic operation
-# Add sensor/hardware interface libraries as needed for production deployment
